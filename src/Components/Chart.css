@@ -1,0 +1,17 @@
+html,
+body,
+#root,
+.Chart {
+  height: 80%;
+  margin: 40px;
+}
+
+.Chart {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.chart-container {
+  flex: 1;
+}
