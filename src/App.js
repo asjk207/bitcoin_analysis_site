@@ -2,8 +2,9 @@ import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 import './App.css';
 import Chart from './Components/Chart';
+import RealTimePrice from './Components/real_time_price';
 import axios from "axios";
-
+import { HashRouter, Route } from "react-router-dom";
 
 
 class App extends Component {
@@ -33,8 +34,8 @@ class App extends Component {
       return (
         <a>
           <h1>BinanceChart(BTC)</h1>
-            {/* <Chart props={bn_price_data}></Chart> */}
             <Chart></Chart>
+            <RealTimePrice></RealTimePrice>
         </a>
       );
     }

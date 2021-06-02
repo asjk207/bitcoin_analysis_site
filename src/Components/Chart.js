@@ -1,44 +1,46 @@
 import React, { useEffect, useRef, Component, useState } from 'react';
 import { createChart, CrosshairMode } from 'lightweight-charts';
-//import { priceData } from './priceData';
-// import { areaData } from './areaData';
 import { volumeData } from './volumeData.js';
 import PropTypes from "prop-types";
 import axios from "axios";
 
 import './Chart.css';
-import { priceData } from './priceData.js';
 
-//binance data 자료형
-    // time: Number,
-    // open: String,
-    // high: String,
-    // low: String,
-    // close: String,
-    // volume: String,
-    // closeTime: Number,
-    // assetVolume: String,
-    // trades: Number,
-    // buyBaseVolume: String,
-    // buyAssetVolume: String,
-    // ignored: String,
-    // date: { type: Date, default: Date.now }
 
-// function Chart({ id, time, open, high, low, close, volume, closeTime, assetVolume, trades, buyBaseVolume, buyAssetVolume, ignored, date }) {
+/*binance data 자료형
+    time: Number,
+    open: String,
+    high: String,
+    low: String,
+    close: String,
+    volume: String,
+    closeTime: Number,
+    assetVolume: String,
+    trades: Number,
+    buyBaseVolume: String,
+    buyAssetVolume: String,
+    ignored: String,
+    date: { type: Date, default: Date.now }
+*/
+
 function Chart () {
 
   const chartContainerRef = useRef();
   const chart = useRef();
   const resizeObserver = useRef();
 
+  //useRef 활용하여 가격데이터를 저장하였지만, 마찬가지로 새로고침시 데이터 사라짐.
+  const latest_bn_price_data = useRef();
+  const latest_isLoading = useRef();
+
   //bn_price_data용 state
   //가격데이터, 로딩 상태 변수 저장.
+  // useState 활용(새로고침시 데이터가 사라져 주석)
   // const [bn_price_data, set_bn_price_data] = useState({
   //   price_data:[],
   //   isLoading: false
   // });
-  const latest_bn_price_data = useRef();
-  const latest_isLoading = useRef();
+
 
   useEffect(() => {
       // const t_data ={price_data:this.bn_price_data[price_data], isloading:bn_price_data[isLoading]};
@@ -46,6 +48,8 @@ function Chart () {
       const get_bn_price_data = async () => {
         try {
         const rs_bn_price_data = await axios.get ("http://localhost:3001/ch_bn_price");
+
+        // useState 활용(새로고침시 데이터가 사라져 주석)
         // set_bn_price_data({
         //   price_data:rs_bn_price_data, 
         //   isLoading:true
@@ -53,7 +57,8 @@ function Chart () {
         //새로고침시 받아온 가격데이터가 초기화 되므로 브라우져 로컬저장소에 데이터 저장.
         window.localStorage.setItem("lo_bn_price_data", JSON.stringify(rs_bn_price_data));
         window.localStorage.setItem("lo_isLoading", JSON.stringify(true));
-
+        
+        //useRef 활용하여 가격데이터를 저장하였지만, 마찬가지로 새로고침시 데이터 사라짐.
         latest_bn_price_data.current=rs_bn_price_data;
         latest_isLoading.current=true;
 
@@ -64,17 +69,7 @@ function Chart () {
         }
       }
       get_bn_price_data();
-      // console.log("before bn_price_data   ");
-      // console.log(latest_bn_price_data.current);
-   
-
-    // if(bn_price_data.isLoading===true) {
-    //   // var bn_price = bn_price_data.data.map(data =>{
-    //   //   console.log(data);
-    //   //   return data;
-    //   // })
-    //   // console.log(bn_price_data.data);
-    // }
+  
 
   },[]);
 
@@ -123,9 +118,6 @@ function Chart () {
         // const t_date=new Date(t_bn_price_data.data[3].time);
         // const f_date=t_date.getFullYear()+'-'+(t_date.getMonth()+1)+'-'+t_date.getDay();
         // console.log(f_date);
-        
-        console.log(Array.isArray(priceData));
-        console.log(Array.isArray(t_bn_price_data.data));
 
         // Array.from(t_bn_price_data.data).forEach(function(el) { console.log(el) });
         // 로컬 저장소에 저장된 binance가격 데이터 배열 챠트 라이브러리 형식에 맞게 파싱
@@ -134,7 +126,6 @@ function Chart () {
             const st_year = st_date.getFullYear();
             const st_month = ("0" + (st_date.getMonth() + 1)).slice(-2);
             const st_day = ("0" + st_date.getDate()).slice(-2);
-            //const f_date = { year: t_year, month: t_month, day: t_day};
             const sf_date=`${st_year}-${st_month}-${st_day}`;
 
             // const ct_date=new Date(d.closeTime);
@@ -155,10 +146,6 @@ function Chart () {
               high:Number(d.high), 
               low:Number(d.low), 
               close:Number(d.close)
-              // open:1.3, 
-              // high:5.8, 
-              // low:1.1, 
-              // close:5.7
             };
         });
 
@@ -173,9 +160,8 @@ function Chart () {
         tt_bn_price_data.sort(date_ascending);
 
         
-        // data.sort(date_ascending);
-        //console.log(data.sort(date_descending)) // 내림차순
-            
+
+        // 내림차순 정렬
         // function date_descending(a, b) {
         //   var dateA = new Date(a['time']).getTime();
         //   var dateB = new Date(b['time']).getTime();
@@ -184,6 +170,8 @@ function Chart () {
             
         console.log(tt_bn_price_data);    
         candleSeries.setData(tt_bn_price_data);
+
+        
         // const areaSeries = chart.current.addAreaSeries({
         //   topColor: 'rgba(38,198,218, 0.56)',
         //   bottomColor: 'rgba(38,198,218, 0.04)',
