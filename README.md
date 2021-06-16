@@ -15,7 +15,8 @@ contact jhkyoon@naver.com
 * Front-End(React)
   1. 컴포넌트 구성
   
-* Back-End(Node JS) - 별도로 프로젝트를 업로드 하였습니다. <a href="https://github.com/asjk207/bitcoin_analysis_server">
+* Back-End(Node JS) - 별도로 프로젝트를 업로드 하였습니다.
+  - <a href="https://github.com/asjk207/bitcoin_analysis_server">BitCoin_Analysis_Server</a>
   
 * 마치며
   1. 프로젝트 보완 사항.
