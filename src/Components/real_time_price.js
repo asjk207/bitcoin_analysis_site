@@ -16,7 +16,10 @@ function RealTimePrice () {
         ub_price_data:0,
         ub_is_Loading:true,
     });
+    // 가격 차이 구하는 변수
     const [price_difference, set_price_difference] = useState();
+    // 가격 차이를 이용한 %값을 구하는 변수
+    const [price_diff_percent, set_price_diff_percent] = useState();
 
     const dollar_exchange = useRef();
     // const [dollar_exchange, set_dollar_exchange] = useState({
@@ -75,6 +78,7 @@ function RealTimePrice () {
             });
             console.log("socket2_on");
             set_price_difference(t_ub_price_data-bn_price_dollar_won);
+            set_price_diff_percent((((t_ub_price_data-bn_price_dollar_won)/t_ub_price_data)*100).toFixed(2));
         });
         setInterval(() =>{
             socket.emit("bn_price",102);
@@ -107,7 +111,12 @@ function RealTimePrice () {
                             <td>비트코인(BTC)</td>
                             <td>{bn_pr_state_data.bn_price_dollar_won}</td>
                             <td>{ub_pr_state_data.ub_price_data}</td>
-                            <td>{price_difference}</td>                            
+                            <td>
+                                {price_difference}
+                                <div>
+                                    ({price_diff_percent}%)
+                                </div>
+                            </td>                          
                         </tr>
 
                     </tbody>               

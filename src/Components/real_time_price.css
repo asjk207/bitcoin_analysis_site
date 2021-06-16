@@ -17,27 +17,33 @@
 }
 
 .rt_container > .RealTimePrice > .RealTimePrice__Table {
-    color:whitesmoke;
+    color:black;
     position:relative;
     top:200px;
     left:80px;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
     font-size: 20px;
     width:80%;
+    background-color: skyblue;
 }
 
 .rt_container > .RealTimePrice > .RealTimePrice__Table > thead > tr > th {
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
     padding: 10px;
 }
 
 .rt_container > .RealTimePrice > .RealTimePrice__Table > tbody > tr > td {
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
     padding: 10px;
+
+}
+
+.rt_container > .RealTimePrice > .RealTimePrice__Table > tbody > tr > td > div{
+    color:darkblue;
 
 }
