@@ -77,7 +77,9 @@ function RealTimePrice () {
                 ub_is_Loading:false
             });
             console.log("socket2_on");
+            // 바이낸스 업비트 실시간 가격 차이 계산
             set_price_difference(t_ub_price_data-bn_price_dollar_won);
+            // 바이낸스 업비트 실시간 가격차이 퍼센트단위로 계산
             set_price_diff_percent((((t_ub_price_data-bn_price_dollar_won)/t_ub_price_data)*100).toFixed(2));
         });
         setInterval(() =>{

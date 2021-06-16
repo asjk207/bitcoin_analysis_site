@@ -200,7 +200,7 @@ function Chart () {
   }, []);
 
   // [] 배열의 의미는 최초일때만 이 함수가 실행 되게 한다. ComponentDidMount와 비슷한 의미이다.
-
+  // 차트 콘테이너를 리사이징 하는 기능(브라우져 축소시 차트 깨짐 현상으로 인해 주석)
   // Resize chart on container resizes.
   // useEffect(() => {
   //   if(JSON.parse(window.localStorage.getItem("lo_isLoading"))===true) {
