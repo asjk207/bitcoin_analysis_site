@@ -7,11 +7,22 @@ body,
 }
 
 .Chart {
+  position: relative;
+  top: 100px;
+  left:50px;
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+.Chart > h1 {
+  position:relative;
+  margin-top: 100px;
+  font-family:'Nanum Gothic', sans-serif;
+  color: white;
 }
 
 .chart-container {
   flex: 1;
 }
+
+

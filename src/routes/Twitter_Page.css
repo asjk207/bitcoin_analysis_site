@@ -1,0 +1,30 @@
+.twitter_page {
+    position:relative;
+    top:150px;
+}
+
+h3 {
+    color:whitesmoke;
+    padding-left: 30px;
+    font-size: 30px;
+}
+
+.twit__embed {
+    position:relative;
+    top:40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.twit__embed > .twit__bitOnChain__Item {
+    width: 50%;
+}
+
+.twit__embed > .twit__Wa__Item {
+    width: 50%;
+}
+
+.twit__embed > ul > li{
+    padding: 30px;
+}
+

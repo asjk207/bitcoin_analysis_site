@@ -1,6 +1,8 @@
 import React from "react";
+// import Header from "../Components/Header"
 import Chart from "../Components/Chart"
 import RealTimePrice from "../Components/real_time_price"
+import './Home.css'
 
 class Home extends React.Component {
     render() {
@@ -8,11 +10,11 @@ class Home extends React.Component {
   //        const { isLoading, bn_price_data} = this.state;
   //       console.log(bn_price_data);
         return (
-          <a>
-            <h1>BinanceChart(BTC)</h1>
-              <Chart></Chart>
-              <RealTimePrice></RealTimePrice>
-          </a>
+          <>
+            <Chart></Chart>
+            <RealTimePrice></RealTimePrice>
+          </>
+
         );
       }
 }

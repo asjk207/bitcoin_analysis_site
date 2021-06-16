@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import io from "socket.io-client";
 import axios from "axios";
+import "./real_time_price.css"
 
 const socket = io("http://localhost:3001/", {transport : ['websocket', 'polling', 'flashsocket']});
 // const socket2 = io("http://localhost:3001/", {transport : ['websocket', 'polling', 'flashsocket']});
@@ -84,17 +85,33 @@ function RealTimePrice () {
 
 
     return (
-        <section className="container">
+        <section className="rt_container">
         {bn_pr_state_data.bn_is_Loading&&ub_pr_state_data.ub_is_Loading ? (
             <div className="RealTimePrice">
               <span className="loader__text">Loading...</span>
             </div>
           ) :(
             <div className="RealTimePrice">
-            <h2>Socekt.io Test</h2>
-            <a>Binance(BTC-USDT) : {bn_pr_state_data.bn_price_dollar_won}            </a>
-            <a>Upbit(BTC-KRW) : {ub_pr_state_data.ub_price_data}        </a>
-            <a>Difference : {price_difference}</a>
+                <h3>RealTimePrice</h3>
+                <table className="RealTimePrice__Table">
+                    <thead>
+                        <tr>
+                            <th>코인 이름</th>
+                            <th>바이낸스 가격</th>
+                            <th>업비트 가격</th>
+                            <th>가격차이</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>비트코인(BTC)</td>
+                            <td>{bn_pr_state_data.bn_price_dollar_won}</td>
+                            <td>{ub_pr_state_data.ub_price_data}</td>
+                            <td>{price_difference}</td>                            
+                        </tr>
+
+                    </tbody>               
+                </table>
             </div>
           )}
         </section>

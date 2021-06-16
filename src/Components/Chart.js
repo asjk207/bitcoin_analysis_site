@@ -199,32 +199,33 @@ function Chart () {
     }
   }, []);
 
-  // [] 배열의 의미는 최초일때만 이함수가 실행 되게 한다. ComponentDidMount와 비슷한 의미이다.
+  // [] 배열의 의미는 최초일때만 이 함수가 실행 되게 한다. ComponentDidMount와 비슷한 의미이다.
 
   // Resize chart on container resizes.
-  useEffect(() => {
-    if(JSON.parse(window.localStorage.getItem("lo_isLoading"))===true) {
+  // useEffect(() => {
+  //   if(JSON.parse(window.localStorage.getItem("lo_isLoading"))===true) {
 
-        resizeObserver.current = new ResizeObserver(entries => {
-          const { width, height } = entries[0].contentRect;
-          chart.current.applyOptions({ width, height });
-          setTimeout(() => {
-            chart.current.timeScale().fitContent();
-          }, 0);
-        });
+  //       resizeObserver.current = new ResizeObserver(entries => {
+  //         const { width, height } = entries[0].contentRect;
+  //         chart.current.applyOptions({ width, height });
+  //         setTimeout(() => {
+  //           chart.current.timeScale().fitContent();
+  //         }, 0);
+  //       });
 
-        resizeObserver.current.observe(chartContainerRef.current);
-        console.log("Chart Resize");
+  //       resizeObserver.current.observe(chartContainerRef.current);
+  //       console.log("Chart Resize");
 
-        //이 부분은 다음 디펜던시에 의해서 실행될때 리턴에 연관된 함수가 실행된다.
-        // ComponentWillUnmount의 역할
-        return () => resizeObserver.current.disconnect();
-      }
+  //       /이 부분은 다음 디펜던시에 의해서 실행될때 리턴에 연관된 함수가 실행된다.
+  //       // ComponentWillUnmount의 역할
+  //       return () => resizeObserver.current.disconnect();
+  //     }
 
-    }, []);
+  //   }, []);
 
     return (
       <div className="Chart">
+        <h1>BitCoinChart(Binance)</h1>
         <div ref={chartContainerRef} className="chart-container" />
       </div>
     );

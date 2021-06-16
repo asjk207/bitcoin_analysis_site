@@ -1,0 +1,43 @@
+.rt_container  {
+
+}
+
+.rt_container > .RealTimePrice > h3  {
+    color:whitesmoke;
+    position:relative;
+    top:200px;
+    left:50px;
+}
+
+.rt_container > .RealTimePrice > .loader__text  {
+    color:whitesmoke;
+    position:relative;
+    top:200px;
+    left:80px;
+}
+
+.rt_container > .RealTimePrice > .RealTimePrice__Table {
+    color:whitesmoke;
+    position:relative;
+    top:200px;
+    left:80px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    font-size: 20px;
+    width:80%;
+}
+
+.rt_container > .RealTimePrice > .RealTimePrice__Table > thead > tr > th {
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    padding: 10px;
+}
+
+.rt_container > .RealTimePrice > .RealTimePrice__Table > tbody > tr > td {
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    padding: 10px;
+
+}

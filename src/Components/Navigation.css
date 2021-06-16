@@ -1,0 +1,32 @@
+header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    font-size: 30px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+header > .inner {
+    height: 60px;
+    top: 0;
+    /* background-color:tomato; */
+    /* margin:  0 auto; */
+    margin-top:14px;
+    margin-left:30px;
+    margin-bottom:14px;
+}
+header .inner .nav > ul{
+    margin-left: 200px;
+}
+header .inner .nav > ul > li{
+    float:left;
+    width:300px;
+    color: yellow;
+}
+header .inner .nav > ul > li > a{
+    margin-left: auto;
+    text-decoration-line: none;
+    display:block;
+    color: white;
+}
